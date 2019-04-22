@@ -8,6 +8,7 @@ import pandas  #Custom Package
  
 #Intraday Chart
 
+#'MVG4LT5VJBPRHLGD' This is my API key , get your from the AlphaVantage site for free 
 ts = TimeSeries(key='MVG4LT5VJBPRHLGD', output_format='pandas')
 data, meta_data = ts.get_intraday(symbol='MSFT',interval='5min', outputsize='full')
 data['4. close'].plot()
