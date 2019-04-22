@@ -6,43 +6,28 @@ import alphavantage
 import json
 import requests
 from alpha_vantage.timeseries import TimeSeries
+import pandas
 
  
 
  
+#Intraday Chart
 
-ts = TimeSeries(key='MVG4LT5VJBPRHLGD', output_format='json')
-data, meta_data = ts.get_intraday(symbol='MSFT',interval='1min', outputsize='full')
-data.plot()
+ts = TimeSeries(key='MVG4LT5VJBPRHLGD', output_format='pandas')
+data, meta_data = ts.get_intraday(symbol='MSFT',interval='5min', outputsize='full')
+data['4. close'].plot()
+ 
 plt.title('Intraday Times Series for the MSFT stock (1 min)')
 plt.show()
 
-#API_URL = "https://www.alphavantage.co/query" 
 
-#data = {
-#    "function": "TIME_SERIES_DAILY",
-#    "symbol": "MSFT",
-#    "outputsize": "compact",
-#    "datatype": "csv",
-#    "apikey": "MVG4LT5VJBPRHLGD",
-#    }
-#response = requests.get(API_URL, params=data)
-#resp = response.json()
+#Daily Chart
+#ts = TimeSeries(key='MVG4LT5VJBPRHLGD', output_format='pandas')
+#data, meta_data = ts.get_daily(symbol='MSFT', outputsize='full')
+
+#data['4. close'].plot()
+ 
+#plt.title('Daily Times Series for the MSFT stock')
+#plt.show()
 
 
-#symbols = ['MSFT',"INTC","AMZN"]
-
-##for symbol in symbols:
-##        data = { 
-##            "function": "TIME_SERIES_INTRADAY", 
-##        "symbol": symbol,
-##        "interval" : "60min",       
-##        "datatype": "json", 
-##        "apikey": "MVG4LT5VJBPRHLGD. " } 
-##        response = requests.get(API_URL, data) 
-##        data = response.json()
-##        print(symbol)
-##        a = (data['Time Series (60min)'])
-##        keys = (a.keys())
-##        for key in keys:
-##                print(a[key]['2. high'] + " " + a[key]['5. volume'])
